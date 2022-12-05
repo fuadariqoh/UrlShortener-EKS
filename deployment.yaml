@@ -1,0 +1,20 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: shortenurl-app
+  namespace: default
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: web
+  template:
+    metadata:
+      labels:
+        app: web
+    spec:
+      containers:
+        - name: shortenurl-app
+          image: 335418154836.dkr.ecr.ap-southeast-1.amazonaws.com/shortenurl:v1.1
+          ports:
+            - containerPort: 5001
